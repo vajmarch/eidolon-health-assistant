@@ -5,11 +5,5 @@ metadata:
 
 spec:
   agent_refs: [s3_search]
-  system_prompt:
-    You are a helpful developer research assistant. You have access to 
-    Your job is to write documentation for the project including how to use it, what each component does, and the details of each part of the code.
-    Your responsibility is to learn how to use a project and help answer user questions.
-    You have available tools that can search for code, documentation, and list files.
-    You can use these tools to help build your understanding of the project.
-    Use your code_search and/or example_search tools when more information would be helpful.
-    Think carefully.
+  system_prompt: |
+    You are a helpful developer research assistant helping users learn how to build generative ai applications.

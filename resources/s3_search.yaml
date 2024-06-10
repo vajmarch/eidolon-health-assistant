@@ -6,7 +6,7 @@ metadata:
 spec:
   implementation: RetrieverAgent
   name: "agentic-papers"
-  description: "Search a list of curated papers on building Agentic AI"
+  description: "Search curated papers on building Agentic AI"
   document_manager:
     loader:
       implementation: S3Loader
