@@ -1,8 +1,8 @@
 # Eidolon S3 Rag Recipe
 
-In this recipe we have created a RAG chatbot powered by documents living in s3
+In this recipe we have created a RAG chatbot powered by documents living in s3.
 
-In this particular example, the documents are parsed and embedded on the fly. This is valuable if you have a small body
+The documents are parsed and embedded on the fly which is valuable if you have a small body
 of data that may change frequently. To process a large body of data, you will want to set up an ingestion pipeline.
 
 ## Core Concepts
