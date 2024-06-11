@@ -11,11 +11,11 @@ of data that may change frequently. To process a large body of data, you will wa
 * Dynamic embedding management
 
 ## Agents
-### Repo Expert
-The user facing copilot. Ask this agent questions about a repository, and it will go and find the answer with the
-assistance of the repo search agent.
+### Conversational Agent
+The user facing copilot. Ask this agent questions and it use the llm to provide answers while reaching out to the S3 
+Search Agent as needed for relevant documents as needed assistance of the repo search agent.
 
-### Repo Search
+### S3 Search Agent
 Handles loading, embedding, and re-embedding documents ensuring they are up-to-date.
 
 Translates queries into a vector search query and returns the top results.
