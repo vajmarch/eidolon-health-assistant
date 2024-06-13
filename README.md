@@ -27,14 +27,31 @@ Translates queries into a vector search query and returns the top results.
 
 ## Running the Server
 
-To run the server in dev mode, use the following command:
+First you need to clone the project and navigate to the project directory:
 
 ```bash
-export AWS_ACCESS_KEY_ID=<YOUR AWS ACCESS KEY>
-export AWS_SECRET_ACCESS_KEY=<YOUR AWS SECRET ACCESS KEY>
+git clone https://github.com/eidolon-ai/eidolon-s3-rag.git
+cd agent-machine
+```
+
+Then run the server in dev mode, use the following command:
+
+```bash
 make serve-dev
 ```
 
-🚨 Make sure you sure you set `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` so you can access the s3 bucket.
+The first time you run this command, you may be prompted to enter credentials that the machine needs 
+to run (ie, OpenAI API Key).
 
-This will start the Eidolon http server without MongoDB along with some other dev tools such as recordings.
+This command will download the dependencies required to run your agent machine and start the Eidolon http server in 
+"dev-mode".
+
+If the server starts successfully, you should see the following output:
+```
+Starting Server...
+INFO:     Started server process [34623]
+INFO:     Waiting for application startup.
+INFO - Building machine 'local_dev'
+...
+INFO - Server Started in 1.50s
+```

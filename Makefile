@@ -2,22 +2,32 @@ DOCKER_NAMESPACE := eidolon-ai
 DOCKER_REPO_NAME := agent-machine
 VERSION := $(shell grep -m 1 '^version = ' pyproject.toml | awk -F '"' '{print $$2}')
 SDK_VERSION := $(shell grep -m 1 '^eidolon-ai-sdk = ' pyproject.toml | awk -F '[="^]' '{print $$4}')
+REQUIRED_ENVS := OPENAI_API_KEY AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
 
-
-.PHONY: serve serve-dev check docker docker-bash docker-push _docker-push
-
-# Load environment variables from .env file.
-include .env
-$(eval export $(shell sed -ne 's/ *#.*$$//; /./ s/=.*$$// p' .env))
-
-check: .env
-	@[[ -z "${OPENAI_API_KEY}" ]] && echo "🚨 Error: OPENAI_API_KEY not set" && exit 1 || echo "👍 OPENAI_API_KEY set"
+.PHONY: serve serve-dev check docker docker-bash docker-push _docker-push .env sync update
 
 serve-dev: .make/poetry_install .env
-	poetry run eidolon-server -m local_dev resources
+	@echo "Starting Server..."
+	@poetry run eidolon-server -m local_dev resources --dotenv .env
 
 serve: .make/poetry_install .env
-	poetry run eidolon-server resources
+	@echo "Starting Server..."
+	@poetry run eidolon-server resources --dotenv .env
+
+.env: Makefile
+	@touch .env
+	@source .env; \
+	for var in $(REQUIRED_ENVS); do \
+		if [ -z "$${!var}" ]; then \
+			read -p "💭 $$var (required): " input; \
+			if [ -n "$$input" ]; then \
+				echo "$$var=$$input" >> .env; \
+			else \
+				echo "🚨 Error: $$var is required"; \
+				exit 1; \
+			fi; \
+		fi; \
+	done;
 
 .make:
 	@mkdir -p .make
@@ -31,9 +41,6 @@ poetry.lock: pyproject.toml
 	@poetry lock --no-update
 	@touch poetry.lock
 
-.env:
-	@cp .template.env .env
-
 docker: poetry.lock
 	docker build --build-arg EIDOLON_VERSION=${SDK_VERSION} -t ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:latest -t ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:${VERSION} .
 
@@ -46,3 +53,17 @@ docker-push:
 _docker-push: docker
 	docker push ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}
 	docker push ${DOCKER_NAMESPACE}/${DOCKER_REPO_NAME}:${VERSION}
+
+update:
+	poetry add eidolon-ai-sdk@latest
+	poetry lock
+
+sync:
+	@if git remote | grep -q upstream; then \
+		echo "upstream already exists"; \
+	else \
+		git remote add upstream https://github.com/eidolon-ai/agent-machine.git; \
+		echo "upstream added"; \
+	fi
+	git fetch upstream
+	git merge upstream/main
