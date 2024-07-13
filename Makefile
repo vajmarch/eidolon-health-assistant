@@ -16,11 +16,10 @@ serve: .make/poetry_install .env
 	@echo "Starting Server..."
 	@poetry run eidolon-server resources --dotenv .env $(ARGS)
 
-.env: Makefile
+.env:
 	@touch .env
-	@if [ -s .env ]; then . .env; fi; \
-	for var in $(REQUIRED_ENVS); do \
-		if [ -z "$$(eval echo \$$$$var)" ]; then \
+	@for var in $(REQUIRED_ENVS); do \
+		if [ -z "$$(eval echo \$$$$var)" ] && ! grep -q "^$$var=" .env; then \
 			read -p "💭 $$var (required): " input; \
 			if [ -n "$$input" ]; then \
 				echo "$$var=$$input" >> .env; \
