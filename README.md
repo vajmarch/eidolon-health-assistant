@@ -34,10 +34,10 @@ git clone https://github.com/eidolon-ai/eidolon-s3-rag.git
 cd agent-machine
 ```
 
-Then run the server in dev mode, use the following command:
+Then run the server using docker, use the following command:
 
 ```bash
-make serve-dev
+make docker-serve
 ```
 
 The first time you run this command, you may be prompted to enter credentials that the machine needs 
