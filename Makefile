@@ -1,6 +1,6 @@
 DOCKER_REPO_NAME := my-eidolon-project
 VERSION := $(shell grep -m 1 '^version = ' pyproject.toml | awk -F '"' '{print $$2}')
-REQUIRED_ENVS := OPENAI_API_KEY
+REQUIRED_ENVS := OPENAI_API_KEY AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
 
 .PHONY: serve serve-dev check docker-serve _docker-serve .env sync update docker-build pull-webui k8s-operator check-kubectl check-helm check-cluster-running verify-k8s-permissions check-install-operator k8s-serve k8s-env test
 

@@ -1,0 +1,16 @@
+apiVersion: server.eidolonai.com/v1alpha1
+kind: Agent
+metadata:
+  name: s3-search
+
+spec:
+  implementation: RetrieverAgent
+  name: "agentic-papers"
+  description: "Search curated papers on building Agentic AI"
+  document_manager:
+    loader:
+      implementation: S3Loader
+      bucket: agentic-papers
+      region_name: us-east-2
+#      aws_access_key_id: ####
+#      aws_secret_access_key: ####

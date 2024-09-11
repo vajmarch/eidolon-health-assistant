@@ -1,6 +1,24 @@
-# Eidolon Agent Machine Template
+# Eidolon S3 Rag Recipe
 
-This project serves as a template for individuals interested in building agents with Eidolon.
+In this recipe we have created a RAG chatbot powered by documents living in s3.
+
+The documents are parsed and embedded on the fly which is valuable if you have a small body
+of data that may change frequently. To process a large body of data, you will want to set up an ingestion pipeline.
+
+## Core Concepts
+* Multi-agent communication
+* Sub-component customization
+* Dynamic embedding management
+
+## Agents
+### Conversational Agent
+The user facing copilot. Ask this agent questions and it use the llm to provide answers while reaching out to the S3 
+Search Agent as needed for relevant documents as needed assistance of the repo search agent.
+
+### S3 Search Agent
+Handles loading, embedding, and re-embedding documents ensuring they are up-to-date.
+
+Translates queries into a vector search query and returns the top results.
 
 ## Directory Structure
 
@@ -12,7 +30,7 @@ This project serves as a template for individuals interested in building agents 
 First you need to clone the project and navigate to the project directory:
 
 ```bash
-git clone https://github.com/eidolon-ai/agent-machine.git
+git clone https://github.com/eidolon-ai/eidolon-s3-rag.git
 cd agent-machine
 ```
 
@@ -50,13 +68,6 @@ To use kubernetes for local development, you will need to have the following ins
 - [Docker](https://docs.docker.com/get-docker/)
 - [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
 - [Helm](https://helm.sh/docs/intro/install/)
-
-Clone the project and navigate to the project directory:
-
-```bash
-git clone https://github.com/eidolon-ai/agent-machine.git
-cd agent-machine
-```
 
 ### Installation
 
