@@ -1452,13 +1452,13 @@ pydantic = ">=2.5.2,<3.0.0"
 
 [[package]]
 name = "eidolon-ai-sdk"
-version = "0.1.125"
+version = "0.1.126"
 description = "An open source sgent service SDK"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "eidolon_ai_sdk-0.1.125-py3-none-any.whl", hash = "sha256:1e040ef5ae5ce760e9178ffe21f63f5f6abf8ba581bb8b8868773950751f4810"},
-    {file = "eidolon_ai_sdk-0.1.125.tar.gz", hash = "sha256:bd7eca300362dec5997f298736fb5d0cec97181405b9af24582316ce9a1975bc"},
+    {file = "eidolon_ai_sdk-0.1.126-py3-none-any.whl", hash = "sha256:e85213cded539fc5cb36ac0035ed3300ccd94419ab19a52bb4636321055e699c"},
+    {file = "eidolon_ai_sdk-0.1.126.tar.gz", hash = "sha256:0b6bf9faf1ddab86c82121e65b1fbd54731995fb7a140d1476622bc6e64901b8"},
 ]
 
 [package.dependencies]
@@ -3861,6 +3861,7 @@ description = "Pure-Python implementation of ASN.1 types and DER/BER/CER codecs 
 optional = false
 python-versions = ">=3.8"
 files = [
+    {file = "pyasn1-0.6.1-py3-none-any.whl", hash = "sha256:0d632f46f2ba09143da3a8afe9e33fb6f92fa2320ab7e886e2d0f7672af84629"},
     {file = "pyasn1-0.6.1.tar.gz", hash = "sha256:6f580d2bdd84365380830acf45550f2511469f673cb4a5ae3857a3170128b034"},
 ]
 
@@ -3871,6 +3872,7 @@ description = "A collection of ASN.1-based protocols modules"
 optional = false
 python-versions = ">=3.8"
 files = [
+    {file = "pyasn1_modules-0.4.1-py3-none-any.whl", hash = "sha256:49bfa96b45a292b711e986f222502c1c9a5e1f4e568fc30e2574a6c7d07838fd"},
     {file = "pyasn1_modules-0.4.1.tar.gz", hash = "sha256:c28e2dbf9c06ad61c71a075c7e0f9fd0f1b0bb2d2ad4377f240d33ac2ab60a7c"},
 ]
 
@@ -6137,4 +6139,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "fea415abd2abe7b60d55d2cd8b0e4a0a2e738fe3ea5c33eb6b114d8aac6603a6"
+content-hash = "b4a1ec6830a44567eb966f6ad92a71a943a25f898384ddcdb5c4f8a59a31a4e0"
