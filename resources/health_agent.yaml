@@ -1,0 +1,11 @@
+apiVersion: server.eidolonai.com/v1alpha1
+kind: Agent
+metadata:
+  name: conversational-agent
+
+spec:
+  agent_refs: [s3-search]
+  system_prompt: |
+    You are inteligent health assitant with access to patient health records
+    Please limit your answer to the information provided in the context. Do not make up facts. 
+    If you don't know the answer, just say that you don't know, don't try to make up an answer.

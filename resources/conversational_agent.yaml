@@ -1,9 +1,0 @@
-apiVersion: server.eidolonai.com/v1alpha1
-kind: Agent
-metadata:
-  name: conversational-agent
-
-spec:
-  agent_refs: [s3-search]
-  system_prompt: |
-    You are a helpful developer research assistant helping users learn how to build generative ai applications.

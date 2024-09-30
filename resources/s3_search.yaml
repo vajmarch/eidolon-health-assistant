@@ -5,12 +5,14 @@ metadata:
 
 spec:
   implementation: RetrieverAgent
-  name: "agentic-papers"
-  description: "Search curated papers on building Agentic AI"
+  name: "health-search"
+  description: "The context below contains entries about the patient's healthcare. 
+              Please limit your answer to the information provided in the context. Do not make up facts. 
+              If you don't know the answer, just say that you don't know, don't try to make up an answer."
   document_manager:
     loader:
       implementation: S3Loader
-      bucket: agentic-papers
+      bucket: health-search
       region_name: us-east-2
 #      aws_access_key_id: ####
 #      aws_secret_access_key: ####
